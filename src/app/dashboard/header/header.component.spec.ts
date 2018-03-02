@@ -22,4 +22,12 @@ describe('HeaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have a chartColor property', () => {
+    expect(component.chartColor).toBe('#FFFFFF');
+  });
+
+  it('should have a child named chart', () => {
+    expect(component.chart).toBeTruthy();
+  });
 });

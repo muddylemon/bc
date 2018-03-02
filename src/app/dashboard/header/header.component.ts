@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Chart } from 'chart.js';
 
 @Component({
@@ -6,23 +6,27 @@ import { Chart } from 'chart.js';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements AfterViewInit {
 
   chartColor = '#FFFFFF';
 
+  @ViewChild('priceChart') chart;
+
+
   constructor() { }
 
-  ngOnInit() {
+  ngAfterViewInit() {
 
-    const ctx = document.getElementById('bigDashboardChart').getContext('2d');
+
+    const ctx = this.chart.nativeElement.getContext('2d');
 
     const gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
-    gradientStroke.addColorStop(0, '#80b6f4');
-    gradientStroke.addColorStop(1, this.chartColor);
+          gradientStroke.addColorStop(0, '#80b6f4');
+          gradientStroke.addColorStop(1, this.chartColor);
 
     const gradientFill = ctx.createLinearGradient(0, 200, 0, 50);
-    gradientFill.addColorStop(0, 'rgba(128, 182, 244, 0)');
-    gradientFill.addColorStop(1, 'rgba(255, 255, 255, 0.24)');
+          gradientFill.addColorStop(0, 'rgba(128, 182, 244, 0)');
+          gradientFill.addColorStop(1, 'rgba(255, 255, 255, 0.24)');
 
     const myChart = new Chart(ctx, {
       type: 'line',
