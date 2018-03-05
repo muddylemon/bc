@@ -17,7 +17,7 @@ export class FeedsService {
       .map(response => {
         return response.json();
       })
-      .catch( this.handleError);
+      .catch( this.handleError );
   }
 
 
