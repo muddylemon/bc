@@ -4,7 +4,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { DashboardModule } from './dashboard/dashboard.module';
-import { FeedsService } from './feeds.service';
+import { FeedsService } from './services/feeds.service';
 
 @NgModule({
   declarations: [
@@ -14,7 +14,10 @@ import { FeedsService } from './feeds.service';
   imports: [
     HttpClientModule,
     BrowserModule,
-    DashboardModule
+    DashboardModule,
+  ],
+  providers: [
+    FeedsService
   ],
   bootstrap: [AppComponent]
 })

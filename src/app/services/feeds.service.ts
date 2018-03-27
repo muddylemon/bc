@@ -12,9 +12,10 @@ export class FeedsService {
     private http: HttpClient
   ) { }
 
-  public getPrices() {
+  getPrices(): Observable<any[]>{
     return this.http.get('https://api.coinmarketcap.com/v1/ticker/')
       .map((response) => {
+        console.log(response);
         return response;
       })
       .catch( this.handleError );

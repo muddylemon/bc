@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Chart } from 'chart.js';
+import { FeedsService } from '../../services/feeds.service';
 
 @Component({
   selector: 'app-header',
@@ -9,14 +10,19 @@ import { Chart } from 'chart.js';
 export class HeaderComponent implements AfterViewInit {
 
   chartColor = '#FFFFFF';
+  feeds = [];
 
   @ViewChild('priceChart') chart;
 
 
-  constructor() { }
+  constructor(private feedsService: FeedsService) { }
 
   ngAfterViewInit() {
 
+    this.feedsService.getPrices()
+      .subscribe(feeds => this.feeds = feeds);
+
+      console.log(this.feeds);
 
     const ctx = this.chart.nativeElement.getContext('2d');
 
