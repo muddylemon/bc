@@ -19,9 +19,7 @@ export class HeaderComponent implements AfterViewInit {
 
   ngAfterViewInit() {
 
-    this.feedsService.getPrices()
-      .subscribe(feeds => this.feeds = feeds);
-
+    this.feeds = this.feedsService.getBitcoinHistory();
       console.log(this.feeds);
 
     const ctx = this.chart.nativeElement.getContext('2d');
@@ -37,7 +35,7 @@ export class HeaderComponent implements AfterViewInit {
     const myChart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+        labels: this.feeds.map(p => p.Date),
         datasets: [{
           label: 'Price',
           borderColor: this.chartColor,
@@ -52,7 +50,7 @@ export class HeaderComponent implements AfterViewInit {
           fill: true,
           backgroundColor: gradientFill,
           borderWidth: 2,
-          data: [505, 1530, 1400, 1900, 2130, 1090, 2150, 2160, 3120, 4140, 5190, 5495]
+          data: this.feeds.map(p => p.Close)
         }]
       },
       options: {
