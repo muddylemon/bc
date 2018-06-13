@@ -43,13 +43,13 @@ export class HeaderComponent implements AfterViewInit {
           pointBackgroundColor: '#1e3d60',
           pointHoverBackgroundColor: '#1e3d60',
           pointHoverBorderColor: this.chartColor,
-          pointBorderWidth: 1,
-          pointHoverRadius: 7,
+          pointBorderWidth: 0,
+          pointHoverRadius: 3,
           pointHoverBorderWidth: 2,
-          pointRadius: 5,
+          pointRadius: 2,
           fill: true,
           backgroundColor: gradientFill,
-          borderWidth: 2,
+          borderWidth: 1,
           data: this.feeds.map(p => p.Close)
         }]
       },
@@ -83,9 +83,8 @@ export class HeaderComponent implements AfterViewInit {
             ticks: {
               fontColor: 'rgba(255,255,255,0.4)',
               fontStyle: 'bold',
-              beginAtZero: true,
-              maxTicksLimit: 10,
-              padding: 10
+              maxTicksLimit: 100,
+              padding: 1
             },
             gridLines: {
               drawTicks: true,
@@ -103,7 +102,7 @@ export class HeaderComponent implements AfterViewInit {
 
             },
             ticks: {
-              padding: 10,
+              padding: 1,
               fontColor: 'rgba(255,255,255,0.4)',
               fontStyle: 'bold'
             }
